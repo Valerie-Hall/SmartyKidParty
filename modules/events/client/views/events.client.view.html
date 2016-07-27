@@ -1,0 +1,89 @@
+<section>
+    <div class="page-header">
+        <h1>Book A Smarty Kid Party</h1>
+        <p>Pick a day and time that you would like to have a Smarty Kid Party!</p>
+    </div>
+    <div>
+        <form name="vm.form.partyForm" ng-submit="vm.scheduleEvent(vm.form.partyForm.$valid)" novalidate>
+            <fieldset>
+
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="hostName">Name of Host</label>
+                    <input name="hostName" type="text" ng-model="vm.form.hostName" id="hostName" class="form-control" placeholder="Host Name" required>
+                    <div ng-messages="vm.form.partyForm.hostName.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Host Name is required.</p>
+                    </div>
+                </div>
+
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="childName">Child's Name</label>
+                    <input name="childName" type="text" ng-model="vm.form.childName" id="childName" class="form-control" placeholder="Child Name" required>
+                    <div ng-messages="vm.form.partyForm.childName.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Child Name is required.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="childAge">Child's Age</label>
+                    <input name="childAge" type="text" ng-model="vm.form.childAge" id="childAge" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="numberOfKids">Approximate Number of Kids at Party</label>
+                    <input name="numberOfKids" type="text" ng-model="vm.form.numberOfKids" id="numberOfKids" class="form-control">
+                </div>
+
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="location">Location of Party</label>
+                    <input name="location" type="location" ng-model="vm.form.location" id="location" class="form-control" placeholder="Location" required>
+                    <div ng-messages="vm.form.partyForm.location.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Location of party is required.</p>
+                    </div>
+                </div>
+
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="email">Email</label>
+                    <input name="email" type="email" ng-model="vm.form.email" id="email" class="form-control" placeholder="Email" required>
+                    <div ng-messages="vm.form.partyForm.email.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Email is required.</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-6 col-md-4"><label class="control-label" for="eventDate">Date</label></div>
+                    <div class="col-xs-6 col-md-4"><label class="control-label" for="startTime">Start Time</label></div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group filter-datepicker col-xs-6 col-md-4" show-errors>
+                        <input type="text" class="form-datepicker form-control date-form" name="eventDate" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.form.eventDate"
+                            is-open="eventDateOpen" ng-click="eventDateOpen = true;" required />
+                        <span ng-click="eventDateOpen = true;"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <div ng-messages="vm.form.partyForm.eventDate.$error" role="alert">
+                            <p class="help-block error-text" ng-message="required">Date of party is required.</p>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4" show-errors">
+                        <uib-timepicker id="startTime" name="startTime" ng-model="vm.form.startTime" hour-step="1" minute-step="5" show-meridian="true"
+                            required></uib-timepicker>
+                        <div ng-messages="vm.form.partyForm.startTime.$error" role="alert">
+                            <p class="help-block error-text" ng-message="required">Start Time of party is required.</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-4 form-col" ng-click="">Check Availability for Party Date</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="message">Message</label>
+                    <textarea name="message" data-ng-model="vm.form.message" id="message" class="form-control" cols="30" rows="10" placeholder="Any special requests or notes you think we should know."></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Book Party!</button>
+                </div>
+                <div ng-show="vm.error" class="text-danger">
+                    <strong ng-bind="vm.error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>

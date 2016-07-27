@@ -1,0 +1,40 @@
+<section>
+  <div class="page-header">
+    <h1>Contact Us</h1>
+    <p>Please feel free to reach out with any questions you may have!</p>
+  </div>
+  <div>
+    <form name="vm.form.contactUsForm" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.form.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.contactUsForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="email">Email</label>
+          <input name="email" type="email" ng-model="vm.form.email" id="email" class="form-control" placeholder="Email" required>
+          <div ng-messages="vm.form.contactUsForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Email is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="message">Message</label>
+          <div ng-messages="vm.form.contactUsForm.message.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please include a message for the email.</p>
+          </div>
+          <textarea name="message" data-ng-model="vm.form.message" id="message" class="form-control" cols="30" rows="10" placeholder="Message"
+            required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default" ng-click="vm.sendMail(vm.form.contactUsForm.$valid)">Send</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
