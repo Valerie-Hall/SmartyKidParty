@@ -1,4 +1,5 @@
 <section>
+    <div ng-if="vm.editingEvent">
     <div class="page-header">
         <h1>Book A Smarty Kid Party</h1>
         <p>Pick a day and time that you would like to have a Smarty Kid Party!</p>
@@ -9,7 +10,7 @@
 
                 <div class="form-group" show-errors>
                     <label class="control-label" for="hostName">Name of Host</label>
-                    <input name="hostName" type="text" ng-model="vm.form.hostName" id="hostName" class="form-control" placeholder="Host Name" required>
+                    <input name="hostName" type="text" ng-model="vm.event.hostName" id="hostName" class="form-control" placeholder="Host Name" required>
                     <div ng-messages="vm.form.partyForm.hostName.$error" role="alert">
                         <p class="help-block error-text" ng-message="required">Host Name is required.</p>
                     </div>
@@ -17,7 +18,7 @@
 
                 <div class="form-group" show-errors>
                     <label class="control-label" for="childName">Child's Name</label>
-                    <input name="childName" type="text" ng-model="vm.form.childName" id="childName" class="form-control" placeholder="Child Name" required>
+                    <input name="childName" type="text" ng-model="vm.event.childName" id="childName" class="form-control" placeholder="Child Name" required>
                     <div ng-messages="vm.form.partyForm.childName.$error" role="alert">
                         <p class="help-block error-text" ng-message="required">Child Name is required.</p>
                     </div>
@@ -25,17 +26,17 @@
 
                 <div class="form-group">
                     <label class="control-label" for="childAge">Child's Age</label>
-                    <input name="childAge" type="text" ng-model="vm.form.childAge" id="childAge" class="form-control">
+                    <input name="childAge" type="text" ng-model="vm.event.childAge" id="childAge" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="numberOfKids">Approximate Number of Kids at Party</label>
-                    <input name="numberOfKids" type="text" ng-model="vm.form.numberOfKids" id="numberOfKids" class="form-control">
+                    <input name="numberOfKids" type="text" ng-model="vm.event.numberOfKids" id="numberOfKids" class="form-control">
                 </div>
 
                 <div class="form-group" show-errors>
                     <label class="control-label" for="location">Location of Party</label>
-                    <input name="location" type="location" ng-model="vm.form.location" id="location" class="form-control" placeholder="Location" required>
+                    <input name="location" type="location" ng-model="vm.event.location" id="location" class="form-control" placeholder="Location" required>
                     <div ng-messages="vm.form.partyForm.location.$error" role="alert">
                         <p class="help-block error-text" ng-message="required">Location of party is required.</p>
                     </div>
@@ -43,7 +44,7 @@
 
                 <div class="form-group" show-errors>
                     <label class="control-label" for="email">Email</label>
-                    <input name="email" type="email" ng-model="vm.form.email" id="email" class="form-control" placeholder="Email" required>
+                    <input name="email" type="email" ng-model="vm.event.email" id="email" class="form-control" placeholder="Email" required>
                     <div ng-messages="vm.form.partyForm.email.$error" role="alert">
                         <p class="help-block error-text" ng-message="required">Email is required.</p>
                     </div>
@@ -56,7 +57,7 @@
 
                 <div class="row">
                     <div class="form-group filter-datepicker col-xs-6 col-md-4" show-errors>
-                        <input type="text" class="form-datepicker form-control date-form" name="eventDate" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.form.eventDate"
+                        <input type="text" class="form-datepicker form-control date-form" name="eventDate" uib-datepicker-popup="MM/dd/yyyy" ng-model="vm.event.eventDate"
                             is-open="eventDateOpen" ng-click="eventDateOpen = true;" required />
                         <span ng-click="eventDateOpen = true;"><i class="glyphicon glyphicon-calendar"></i></span>
                         <div ng-messages="vm.form.partyForm.eventDate.$error" role="alert">
@@ -64,7 +65,7 @@
                         </div>
                     </div>
                     <div class="form-group col-xs-6 col-md-4" show-errors">
-                        <uib-timepicker id="startTime" name="startTime" ng-model="vm.form.startTime" hour-step="1" minute-step="5" show-meridian="true"
+                        <uib-timepicker id="startTime" name="startTime" ng-model="vm.event.startTime" hour-step="1" minute-step="5" show-meridian="true"
                             required></uib-timepicker>
                         <div ng-messages="vm.form.partyForm.startTime.$error" role="alert">
                             <p class="help-block error-text" ng-message="required">Start Time of party is required.</p>
@@ -75,7 +76,7 @@
 
                 <div class="form-group">
                     <label class="control-label" for="message">Message</label>
-                    <textarea name="message" data-ng-model="vm.form.message" id="message" class="form-control" cols="30" rows="10" placeholder="Any special requests or notes you think we should know."></textarea>
+                    <textarea name="message" data-ng-model="vm.event.message" id="message" class="form-control" cols="30" rows="10" placeholder="Any special requests or notes you think we should know."></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Book Party!</button>
@@ -85,5 +86,23 @@
                 </div>
             </fieldset>
         </form>
+    </div>
+    </div>
+    <div ng-if="!vm.editingEvent">
+        <div class="page-header">
+        <h1>Your Smarty Kid Party has been booked!</h1>
+        <p>Thank you for booking a Smarty Kid Party! We can't wait to celebrate with you!</p>
+
+        <div ng-repeat="event in vm.events">
+            <div ng-bind="event.hostName"></div>
+            <div ng-bind="event.childName"></div>
+            <div ng-bind="event.childAge"></div>
+            <div ng-bind="event.numberOfKids"></div>
+            <div ng-bind="event.location"></div>
+            <div ng-bind="event.email"></div>
+            <div ng-bind="event.eventDate"></div><div ng-bind="event.startTime"></div>
+            <div ng-bind="event.message"></div>
+        </div>
+    </div>
     </div>
 </section>

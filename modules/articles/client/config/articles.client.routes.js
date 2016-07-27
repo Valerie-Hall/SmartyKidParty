@@ -32,7 +32,6 @@
           articleResolve: newArticle
         },
         data: {
-          roles: ['user', 'admin'],
           pageTitle: 'Articles Create'
         }
       })

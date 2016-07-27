@@ -2,31 +2,30 @@
   'use strict';
 
   angular
-    .module('articles')
-    .run(menuConfig);
+    .module('articles');
+  //   .run(menuConfig);
 
-  menuConfig.$inject = ['menuService'];
+  //  menuConfig.$inject = ['menuService'];
 
-  function menuConfig(menuService) {
-    menuService.addMenuItem('topbar', {
-      title: 'Articles',
-      state: 'articles',
-      type: 'dropdown',
-      roles: ['*'],
-      position: 2
-    });
+  // function menuConfig(menuService) {
+  //   menuService.addMenuItem('topbar', {
+  //     title: 'Articles',
+  //     state: 'articles',
+  //     type: 'dropdown',
+  //     roles: ['*'],
+  //     position: 2
+  //   });
 
-    // Add the dropdown list item
-    menuService.addSubMenuItem('topbar', 'articles', {
-      title: 'List Articles',
-      state: 'articles.list'
-    });
+  //   // Add the dropdown list item
+  //   menuService.addSubMenuItem('topbar', 'articles', {
+  //     title: 'List Articles',
+  //     state: 'articles.list'
+  //   });
 
-    // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'articles', {
-      title: 'Create Article',
-      state: 'articles.create',
-      roles: ['user']
-    });
-  }
+  //   // Add the dropdown create item
+  //   menuService.addSubMenuItem('topbar', 'articles', {
+  //     title: 'Create Article',
+  //     state: 'articles.create'
+  //   });
+  // }
 }());
