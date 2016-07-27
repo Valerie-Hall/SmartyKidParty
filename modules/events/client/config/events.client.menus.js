@@ -10,7 +10,7 @@
   function menuConfig(menuService) {
     menuService.addMenuItem('topbar', {
       title: 'Book A Party',
-      state: 'events',
+      state: 'create_event',
       type: '',
       roles: ['*'],
       position: 0

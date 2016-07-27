@@ -9,7 +9,7 @@
   EventsService.$inject = ['$resource'];
 
   function EventsService($resource) {
-    return $resource('api/events', {eventId: '@_id'}, {
+    return $resource('api/events', { eventId: '@_id' }, {
       update: { method: 'PUT' }
     });
 

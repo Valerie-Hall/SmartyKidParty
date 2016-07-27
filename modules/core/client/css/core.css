@@ -76,6 +76,20 @@ body {
   padding-left: 0px;
   padding-top: 35px;
 }
+.event-container {
+   margin-top: 50px;
+   box-shadow: 0 0 30px darkslategrey;
+   padding:15px 15px;
+   border-radius: 6px;
+   font-size: 140%;
+}
+.event-details {
+  padding-left: 30px;
+  font-size: 90%;
+}
+.colored-name {
+  color: blue;
+}
 /*navbar*/
 .navbar-inverse {
   background-color: #cc0000;

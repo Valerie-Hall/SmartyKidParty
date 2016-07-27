@@ -10,23 +10,21 @@
   function routeConfig($stateProvider) {
     $stateProvider
 
-      .state('events', {
+      .state('create_event', {
         url: '/BookAParty',
-        templateUrl: 'modules/events/client/views/events.client.view.html',
-        controller: 'EventsController',
+        templateUrl: 'modules/events/client/views/form-event.client.view.html',
+        controller: 'CreateEventController',
         controllerAs: 'vm',
         resolve: {
           eventResolve: newEvent
         }
+      })
+      .state('events', {
+        url: '/Events',
+        templateUrl: 'modules/events/client/views/events.client.view.html',
+        controller: 'EventsController',
+        controllerAs: 'vm'
       });
-  }
-
-  getEvent.$inject = ['$stateParams', 'EventsService'];
-
-  function getEvent($stateParams, EventsService) {
-    return EventsService.get({
-      eventId: $stateParams.eventId
-    }).$promise;
   }
 
   newEvent.$inject = ['EventsService'];
